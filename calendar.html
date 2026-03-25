@@ -224,14 +224,14 @@ body {
 </div><!-- /#main -->
 
 <script>
-const PASSWORD = '0564879';
+const PASSWORD = '123456';
 
 function checkPW() {
   const v = document.getElementById('pw-input').value;
   if (v === PASSWORD) {
     document.getElementById('lock-screen').style.display = 'none';
     document.getElementById('main').style.display = 'block';
-    localStorage.setItem('jeju_auth', '1');
+    localStorage.setItem('jeju_cal_auth', '1');
   } else {
     document.getElementById('pw-error').style.display = 'block';
     document.getElementById('pw-input').value = '';
@@ -243,7 +243,7 @@ document.getElementById('pw-input').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') checkPW();
 });
 
-if (localStorage.getItem('jeju_auth') === '1') {
+if (localStorage.getItem('jeju_cal_auth') === '1') {
   document.getElementById('lock-screen').style.display = 'none';
   document.getElementById('main').style.display = 'block';
 }
