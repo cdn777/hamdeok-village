@@ -27,6 +27,75 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* LOCK SCREEN */
+.lock-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.pw-form {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  max-width: 340px;
+  width: 90%;
+  text-align: center;
+}
+.pw-form .lock-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.pw-form h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.pw-form p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+.pw-form input {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  text-align: center;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.75rem;
+}
+.pw-form input:focus { border-color: var(--accent); }
+.pw-form button {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.65rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+.pw-form button:hover { background: var(--accent2); }
+.pw-error {
+  font-size: 0.78rem;
+  color: #e05555;
+  margin-top: 0.5rem;
+  display: none;
+}
+
 /* TOP BAR */
 .top-bar {
   background: rgba(240,250,248,0.97);
@@ -114,6 +183,19 @@ body {
 </head>
 <body>
 
+<div class="lock-screen" id="lock-screen">
+  <div class="pw-form">
+    <div class="lock-icon">🔒</div>
+    <h2>비밀번호를 입력해주세요</h2>
+    <p>창경빌리지 602호 안내 페이지</p>
+    <input type="password" id="pw-input" placeholder="••••••••" maxlength="20" />
+    <button onclick="checkPW()">확인</button>
+    <div class="pw-error" id="pw-error">비밀번호가 맞지 않아요</div>
+  </div>
+</div>
+
+<div id="main" style="display:none;">
+
 <div class="top-bar">
   <a class="back-btn" href="index.html">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -138,6 +220,34 @@ body {
   </div>
 
 </div>
+
+</div><!-- /#main -->
+
+<script>
+const PASSWORD = '0564879';
+
+function checkPW() {
+  const v = document.getElementById('pw-input').value;
+  if (v === PASSWORD) {
+    document.getElementById('lock-screen').style.display = 'none';
+    document.getElementById('main').style.display = 'block';
+    localStorage.setItem('jeju_auth', '1');
+  } else {
+    document.getElementById('pw-error').style.display = 'block';
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-input').focus();
+  }
+}
+
+document.getElementById('pw-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') checkPW();
+});
+
+if (localStorage.getItem('jeju_auth') === '1') {
+  document.getElementById('lock-screen').style.display = 'none';
+  document.getElementById('main').style.display = 'block';
+}
+</script>
 
 </body>
 </html>
