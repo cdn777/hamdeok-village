@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>예약 일정 — 창경빌리지 602호</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #F0FAF8;
+  --surface: #FFFFFF;
+  --border: #C8EAE4;
+  --text: #0F2B27;
+  --muted: #5A8A82;
+  --accent: #1A8A78;
+  --accent-light: #D4F2ED;
+  --accent2: #0D6B5C;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* TOP BAR */
+.top-bar {
+  background: rgba(240,250,248,0.97);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.back-btn svg {
+  flex-shrink: 0;
+}
+
+.top-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* CONTENT */
+.content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.page-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.page-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* CALENDAR WRAPPER */
+.cal-wrap {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  /* 16:10 aspect ratio for calendar */
+  position: relative;
+  padding-bottom: 75%;
+}
+
+.cal-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.cal-note {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a class="back-btn" href="index.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 5l-7 7 7 7"/>
+    </svg>
+    돌아가기
+  </a>
+  <div class="top-title">창경빌리지 602호</div>
+</div>
+
+<div class="content">
+  <div class="page-title">예약 일정</div>
+  <div class="page-desc">색칠된 구간은 이미 예약된 기간이에요. 빈 날짜로 방문 일정을 잡아주세요 😊</div>
+
+  <div class="cal-wrap">
+    <iframe
+      src="https://calendar.google.com/calendar/embed?src=vpq30rn93cvk8jbhbcsao8t59o%40group.calendar.google.com&ctz=Asia%2FSeoul&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=MONTH"
+      frameborder="0"
+      scrolling="no"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="cal-note">
+    개인정보 보호를 위해 예약자 이름은 표시되지 않아요<br>
+    방문 일정이 정해지면 동녕에게 연락해주세요 · 010-7922-7959
+  </div>
+</div>
+
+</body>
+</html>
