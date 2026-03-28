@@ -96,40 +96,6 @@ body {
   display: none;
 }
 
-/* TOP BAR */
-.top-bar {
-  background: rgba(240,250,248,0.97);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--border);
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.back-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  text-decoration: none;
-  color: var(--accent);
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.back-btn svg {
-  flex-shrink: 0;
-}
-
-.top-title {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text);
-}
-
 /* CONTENT */
 .content {
   max-width: 860px;
@@ -147,7 +113,7 @@ body {
 .page-desc {
   font-size: 0.85rem;
   color: var(--muted);
-  margin-bottom: 1.5rem;
+  margin-top: 1rem;
   line-height: 1.6;
 }
 
@@ -158,9 +124,16 @@ body {
   border-radius: 16px;
   overflow: hidden;
   width: 100%;
-  /* 16:10 aspect ratio for calendar */
   position: relative;
-  padding-bottom: 120%;
+  padding-bottom: 75%;
+}
+
+@media (max-width: 600px) {
+  .cal-wrap {
+    padding-bottom: 120%;
+}
+
+  }
 }
 
 .cal-wrap iframe {
@@ -196,19 +169,8 @@ body {
 
 <div id="main" style="display:none;">
 
-<div class="top-bar">
-  <a class="back-btn" href="index.html">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M19 12H5M12 5l-7 7 7 7"/>
-    </svg>
-    돌아가기
-  </a>
-  <div class="top-title">창경빌리지 602호</div>
-</div>
-
 <div class="content">
   <div class="page-title">예약 일정</div>
-  <div class="page-desc">색칠된 구간은 이미 예약된 기간이에요. 빈 날짜로 방문 일정을 잡고, 일정이 정해지면 연락주세요! 😊</div>
 
   <div class="cal-wrap">
     <iframe
@@ -218,6 +180,8 @@ body {
       allowfullscreen>
     </iframe>
   </div>
+
+  <div class="page-desc">색칠된 구간은 이미 예약된 기간이에요. 빈 날짜로 방문 일정을 잡고, 일정이 정해지면 연락주세요! 😊</div>
 
 </div>
 
